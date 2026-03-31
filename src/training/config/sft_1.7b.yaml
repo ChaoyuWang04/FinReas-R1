@@ -1,0 +1,30 @@
+# SFT / distillation configuration
+# --------------------------------
+# Loaded by ``src.training.sft_trainer`` and translated into an OpenRLHF
+# deepspeed command.
+
+trainer:
+  backend: openrlhf
+  model_name_or_path: Qwen/Qwen2.5-7B-Instruct # Base instruct checkpoint to distill from.
+  output_dir: experiments/round2/sft_qwen2_5_7b # Where distilled checkpoints are written.
+  train_batch_size: 128 # Global SFT batch; keep reasonably large if packing is enabled.
+  micro_train_batch_size: 1 # First parameter to lower for memory pressure.
+  max_epochs: 1 # Distillation often starts with a single pass before RL.
+  max_len: 12288 # Long because reasoning traces can be much longer than plain chat outputs.
+  learning_rate: 5e-6 # Common full-parameter SFT default for large LMs.
+  zero_stage: 3 # Standard DeepSpeed sharding level for memory-heavy fine-tuning.
+  deepspeed_include: localhost:0,1,2,3 # Local GPU selection forwarded to deepspeed.
+  apply_chat_template: true
+  flash_attn: true
+  gradient_checkpointing: true # Usually enabled to fit long sequences.
+  packing_samples: true # Improves token utilization when sample lengths vary.
+  adam_offload: true # Helpful when optimizer state memory is a bottleneck.
+  bf16: true # Common mixed-precision default on modern training GPUs.
+  save_steps: -1
+  logging_steps: 1
+  eval_steps: -1
+data:
+  train_file: data/processed/train_with_sys.jsonl # Prompt-injected train split.
+  eval_file: data/processed/test_with_sys.jsonl # Prompt-injected validation split.
+  input_key: context_messages # Matches the repository-wide conversation schema.
+  output_key: winner # In distillation runs this field is reused as the supervised target field.

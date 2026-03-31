@@ -1,0 +1,101 @@
+# ------------------------------
+# Python bytecode and caches
+# ------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ------------------------------
+# Native extensions / packaging
+# ------------------------------
+*.so
+.Python
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ------------------------------
+# Virtual environments and local env files
+# ------------------------------
+venv/
+env/
+ENV/
+.venv/
+.env
+.env.*
+*.local
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ------------------------------
+# Test, coverage, and type-check caches
+# ------------------------------
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+
+# ------------------------------
+# Notebook and editor artifacts
+# ------------------------------
+.ipynb_checkpoints/
+.vscode/
+
+# ------------------------------
+# OS-specific junk files
+# ------------------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ------------------------------
+# Logs and runtime outputs
+# ------------------------------
+*.log
+logs/
+wandb/
+outputs/
+
+# ------------------------------
+# Local model and training artifacts
+# ------------------------------
+models/
+checkpoints/
+
+# ------------------------------
+# External dependencies / vendor checkouts
+# These should be re-cloned or installed locally, not committed.
+# ------------------------------
+dependencies/
+
+# ------------------------------
+# Keep project data in git
+# Data is intentionally versioned for this repository.
+# ------------------------------
+!data/
+!data/raw/
+!data/processed/
+!data/reasoning_chains/
+
