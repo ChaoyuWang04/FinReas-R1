@@ -5,7 +5,7 @@
     <img src="images/logo.jpg" alt="Logo" width="100" height="100">
   </a>
 
-<h3 align="center">FinRAG-GRPO</h3>
+<h3 align="center">FinReas-R1</h3>
 
 <p align="center">
   A GRPO training pipeline for reasoning reward modeling on Chinese customer-service preference data.
